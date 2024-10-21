@@ -1,10 +1,10 @@
 import { useId } from "react";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 import css from "./ContactForm.module.css";
-import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contactsOps";
+// import { useDispatch } from "react-redux";
+// import { addContact } from "../../redux/contactsOps";
 
 const initialValues = {
   number: "",
@@ -26,15 +26,16 @@ const ContactForm = () => {
   const phoneId = useId();
   const nameId = useId();
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
-    dispatch(
-      addContact({
-        id: uuidv4(),
-        ...values,
-      })
-    );
+    // dispatch(
+    //   addContact({
+    //     id: uuidv4(),
+    //     ...values,
+    //   })
+    // );
+    console.log(values);
 
     actions.resetForm();
   };

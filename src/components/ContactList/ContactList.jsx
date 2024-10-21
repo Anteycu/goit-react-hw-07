@@ -1,11 +1,15 @@
 import { useSelector } from "react-redux";
+import { useGetContactsQuery } from "../../services/contacts-api";
 import Contact from "../Contact/Contact";
 import css from "./ContactList.module.css";
 import { selectMemoVisibleContacts } from "../../redux/selectors";
 
 const ContactList = () => {
-  const contacts = useSelector(selectMemoVisibleContacts);
-
+  const { data } = useGetContactsQuery("");
+  const contacts = useSelector((state) =>
+    selectMemoVisibleContacts(state, data)
+  );
+  console.log(contacts);
   return (
     <ul className={css.contacts}>
       {contacts.map(({ id, name, number }) => (

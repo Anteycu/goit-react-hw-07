@@ -7,8 +7,8 @@ const SearchBox = () => {
   const searchedName = useSelector(selectNameFilter);
   const dispatch = useDispatch();
 
-  const handleFilterChange = ({ currentTarget }) => {
-    dispatch(changeFilter(currentTarget.value));
+  const handleFilterChange = ({ target }) => {
+    dispatch(changeFilter(target.value));
   };
 
   return (
