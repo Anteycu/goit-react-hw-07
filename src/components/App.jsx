@@ -12,14 +12,6 @@ function App() {
       <ContactForm />
       <SearchBox />
       {isFetching && !error ? "Request progressing..." : <ContactList />}
-
-      {/* {isFetching && !error && "Request progressing..."}
-      {data && (
-        <>
-          <SearchBox />
-          <ContactList />
-        </>
-      )} */}
     </div>
   );
 }

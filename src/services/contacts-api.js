@@ -5,22 +5,29 @@ export const contactsApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: `https://6700132e4da5bd2375531ab3.mockapi.io`,
   }),
+  tagTypes: ["Contacts"],
   endpoints: (builder) => ({
     getContacts: builder.query({
       query: () => "/contacts",
+      providesTags: ["Contacts"],
+    }),
+    addContact: builder.mutation({
+      query: (contact) => {
+        return { url: "/contacts", method: "POST", body: contact };
+      },
+      invalidatesTags: ["Contacts"],
+    }),
+    deleteContact: builder.mutation({
+      query: (id) => {
+        return { url: `/contacts/${id}`, method: "DELETE" };
+      },
+      invalidatesTags: ["Contacts"],
     }),
   }),
 });
 
-export const { useGetContactsQuery } = contactsApi;
-
-// axios.defaults.baseURL = "https://6700132e4da5bd2375531ab3.mockapi.io/";
-// export const fetchContacts = () => {
-//   return axios.get("/contacts");
-// };
-// export function updateContacts(contact) {
-//   return axios.post("/contacts", contact);
-// }
-// export function deleteContact(id) {
-//   return axios.delete(`/contacts/${id}`);
-// }
+export const {
+  useGetContactsQuery,
+  useAddContactMutation,
+  useDeleteContactMutation,
+} = contactsApi;

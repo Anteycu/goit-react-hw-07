@@ -1,10 +1,9 @@
-// import { useDispatch } from "react-redux";
-// import { deleteContact } from "../../redux/contactsOps";
+import { useDeleteContactMutation } from "../../services/contacts-api";
 import css from "./Contact.module.css";
 
 const Contact = ({ username, phoneNum, contactId }) => {
-  // const dispatch = useDispatch();
-  // const handleDelete = () => dispatch(deleteContact(contactId));
+  const [deleteContact] = useDeleteContactMutation();
+  const handleDelete = (contactId) => deleteContact(contactId);
   return (
     <>
       <div className={css.contactInfo}>
@@ -14,7 +13,7 @@ const Contact = ({ username, phoneNum, contactId }) => {
       <button
         type="button"
         onClick={() => {
-          console.log(contactId);
+          handleDelete(contactId);
         }}
       >
         Delete
