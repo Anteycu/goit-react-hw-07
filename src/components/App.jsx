@@ -4,14 +4,14 @@ import ContactList from "./ContactList/ContactList";
 import { useGetContactsQuery } from "../services/contacts-api";
 
 function App() {
-  const { isFetching, error } = useGetContactsQuery("");
+  const { isLoading, error } = useGetContactsQuery("");
 
   return (
     <div className="container">
       <h1>Phonebook</h1>
       <ContactForm />
       <SearchBox />
-      {isFetching && !error ? "Request progressing..." : <ContactList />}
+      {isLoading && !error ? "Request progressing..." : <ContactList />}
     </div>
   );
 }

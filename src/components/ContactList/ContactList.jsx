@@ -9,7 +9,6 @@ const ContactList = () => {
   const contacts = useSelector((state) =>
     selectMemoVisibleContacts(state, data)
   );
-  console.log(contacts);
   return (
     <ul className={css.contacts}>
       {contacts.map(({ id, name, number }) => (
